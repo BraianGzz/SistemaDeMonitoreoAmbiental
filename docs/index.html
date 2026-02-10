@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Comunicación de Datos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">PROYECTO <strong>FINAL</strong></div>
+        <nav>
+            <a href="#prese" class="nav-link">Presentación</a>
+            <a href="#docu" class="nav-link">Documentación</a>
+        </nav>
+    </header>
+
+    <section id="prese" class="page-header">
+        <div class="header-content">
+            <h1>Sistema de Monitoreo Ambiental</h1>
+            <h3>Comunicación de Datos | Ingeniería en Informática</h3>
+            <h3>Gonzalez Braian Exequiel</h3>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="card">
+            <h2>Propuesta</h2>
+            <p><strong>Este proyecto consiste en un sistema de monitoreo ambiental inteligente capaz de medir variables del entorno como temperatura, humedad, presencia de gas y distancia, utilizando sensores electrónicos conectados a una placa Arduino.</strong></p>
+
+            <p><strong>El dispositivo recopila constantemente la información del ambiente, la procesa y la envía a un sistema central donde los datos se almacenan y se organizan para su consulta. A través de una interfaz web clara y visual, cualquier usuario puede editar, borrar y observar las mediciones en tiempo real, revisar registros anteriores y detectar situaciones de riesgo de forma sencilla. El sistema funciona actualmente como un prototipo operativo sobre un servidor local mediante XAMPP.</strong></p>
+
+            <p><strong>En esencia, el sistema conecta el mundo físico con una plataforma digital, permitiendo supervisar condiciones ambientales, de manera automática y continua.</strong></p>
+
+            <p><strong>Video demostración: </strong><a href="https://youtu.be/k2A_GK8CU_s?si=JKJnNvNfZRLNIKsi" target="_blank" class="simple-link">Ver video en YouTube</a></p>
+        </section>
+
+        <section class="card">
+            <h2>Hardware</h2>
+            <div class="list-container">
+                <p>• <strong>Arduino UNO R3:</strong> Unidad de control principal que coordina la lectura de sensores y el envío de datos.</p>
+                <p>• <strong>Módulo Ethernet W5100:</strong> Permite la conexión del sistema a la red para la transmisión de información hacia el servidor vía Ethernet.</p>
+                <p>• <strong>Sensores electrónicos:</strong> DHT11 (temperatura y humedad), HC-SR04 (medición de distancia), MQ-2 (detección de gases) y buzzer para alertas sonoras.</p>
+                <p>• <strong>Pantalla OLED:</strong> Muestra en tiempo real las mediciones principales sin necesidad de acceder a la interfaz web.</p>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Software</h2>
+            <div class="list-container">
+                <p>• <strong>Servidor Apache (entorno local XAMPP):</strong> Servicio web que recibe las solicitudes del sistema y gestiona la comunicación con los clientes.</p>
+                <p>• <strong>Backend en PHP:</strong> Lógica del servidor encargada de procesar las mediciones, validarlas y conectarse con la base de datos.</p>
+                <p>• <strong>Base de Datos MySQL:</strong> Sistema de almacenamiento donde se registran y organizan todas las mediciones ambientales.</p>
+                <p>• <strong>Interfaz Web:</strong> Desarrollada con HTML, CSS y JavaScript para visualizar la información en tiempo real y permitir la interacción del usuario.</p>
+                <p>• <strong>Arduino IDE:</strong> Entorno de desarrollo utilizado para programar la placa Arduino en un lenguaje basado en C/C++, gestionar las librerías de los sensores y cargar el firmware del sistema.</p>
+            </div>
+
+            <div class="icon-bar">
+                <img src="iconos/xampp.png" class="icon">
+                <img src="iconos/mysql.png" class="icon">
+                <img src="iconos/php.png" class="icon">
+                <img src="iconos/html.png" class="icon">
+                <img src="iconos/css.png" class="icon">
+                <img src="iconos/js.png" class="icon">
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>¿Qué Hace el Sistema?</h2>
+            <div class="list-container">
+                <p>• Los sensores miden el ambiente constantemente cada segundo</p>
+                <p>• Arduino procesa esa información y la envía por la red cada 10 segundos</p>
+                <p>• El servidor recibe los datos y los guarda en una base de datos MySQL</p>
+                <p>• La página web se actualiza automáticamente cada 5 segundos</p>
+                <p>• Sistema de alertas: Normal (Gas &le;250 y Dist &ge;15cm), Advertencia (Gas &gt;250 o Dist &lt;15cm), Peligro (Gas &gt;400 o Dist &lt;5cm)</p>
+                <img src="diagramas/imgdemo.png" alt="Imagen demo" class="imagen-proyecto">
+                <img src="diagramas/imgdemo1.png" alt="Imagen demo" class="imagen-proyecto">
+                <img src="diagramas/imgdemo2.jpg" alt="Imagen demo" class="imagen-proyecto">
+            </div>
+            <div class="icon-bar">
+                <img src="iconos/sensor.png" class="icon">
+                <img src="iconos/red.png" class="icon">
+                <img src="iconos/servidor.png" class="icon">
+                <img src="iconos/www.png" class="icon">
+            </div>
+        </section>
+
+        <section id="docu" class="card">
+            <h2>Documentación Técnica del Sistema</h2>
+            <p>Descripción de la arquitectura de comunicación, protocolos de red y flujo de datos entre el dispositivo IoT y el servidor.</p>
+            <p>Este proyecto demuestra la implementación práctica de conceptos fundamentales de <strong>Comunicación de Datos</strong>: arquitectura cliente-servidor, protocolos de red, API REST, intercambio de datos en formato JSON y flujo de información end-to-end.</p>
+
+            <div class="list-container">
+                <p>• <strong>Arquitectura Cliente-Servidor:</strong> Arduino actúa como cliente HTTP enviando datos al servidor Apache. Los navegadores web consultan estos datos mediante API REST.</p>
+                <p>• <strong>Protocolos de Comunicación TCP/IP:</strong> La transmisión de datos se realiza mediante <strong>HTTP (Capa de Aplicación)</strong>, funcionando sobre <strong>TCP (Capa de Transporte)</strong> e <strong>IPv4 (Capa de Red)</strong>, dentro de una red local <strong>Ethernet (Capa de Enlace)</strong>. TCP garantiza una entrega confiable de la información mediante control de errores y mecanismos de retransmisión.</p>
+                <p>• <strong>Referencia al Modelo OSI:</strong> El sistema puede analizarse según las 7 capas del modelo OSI como marco teórico: Capa Física (Cable UTP), Enlace (Ethernet 802.3), Red (IPv4), Transporte (TCP), Sesión (Conexiones HTTP), Presentación (JSON), Aplicación (HTTP/1.1). Cada capa cumple su función específica en la comunicación Arduino-Servidor.</p>
+                <p>• <strong>Formato de Datos - JSON:</strong> Estructura ligera y legible para intercambio de información. El servidor responde en JSON y datos estructurados.</p>
+                <p>• <strong>API REST - CRUD Completo:</strong> 4 endpoints implementados: <code>POST guardar_datos.php</code> (Create), <code>GET obtener_datos.php</code> (Read), <code>PUT actualizar_registro.php</code> (Update), <code>DELETE eliminar_registro.php</code> (Delete).</p>
+                <p>• <strong>Código:</strong> Todo el código del proyecto se encuentra debidamente comentado y documentado para facilitar su comprensión y análisis</p>
+
+                <p>• <strong>Base de Datos:</strong> MySQL con tabla <em>sensor</em> (7 campos).</p>
+<pre><code>CREATE TABLE sensor (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    temperatura FLOAT NULL,
+    humedad FLOAT NULL,
+    gas INT NULL,
+    distancia FLOAT NULL,
+    alerta INT NULL,
+    fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);</code></pre>
+
+                <p>• <strong>Arquitectura:</strong> Sistema de 5 capas - Hardware (sensores) → Comunicación (TCP/IP) → Backend (PHP) → Base de Datos (MySQL) → Frontend (HTML/CSS/JS).</p>
+                <img src="diagramas/Arquitectura.png" alt="Flujo de datos" class="imagen-proyecto">
+
+                <p>• <strong>Topología de Red:</strong> Red local. Arduino en IP estática ante falla de asignación automática 192.168.10.150, servidor en 192.168.10.100.</p>
+                <p>• <strong>Flujo de Datos End-to-End:</strong> Sensores → Arduino (lectura) → HTTP POST → Servidor PHP (validación) → MySQL (almacenamiento) → Interfaz Web (visualización en tiempo real).</p>
+                <p>• <strong>Frecuencia de Actualización:</strong> Arduino envía datos cada 10 segundos. Interfaz web consulta cada 5 segundos (actualización asíncrona sin recargar).</p>
+                <p>• <strong>Diagrama de Conexiones:</strong> Shield Ethernet conectado vía SPI (pines 10-13). DHT11 en pin digital 2. HC-SR04 en pines 8-9. MQ-2 en pin analógico A0. OLED vía I2C (A4-A5).</p>
+                <img src="diagramas/circuit_image.png" alt="Montaje del sistema IoT" class="imagen-proyecto">
+
+                <p>• <strong>Interfaz Web Responsive:</strong> Dashboard con 4 tarjetas de sensores, tabla de historial con CRUD visual, modal de edición.</p>
+                <p>• <strong>Persistencia de Datos:</strong> ~8,640 registros diarios (1 cada 10s).</p>
+                <p>• <strong>Confiabilidad del Sistema:</strong> Timeouts de 5 segundos en conexiones. Reintentos automáticos.</p>
+
+                <p><strong>Repositorio de GitHub (archivos y guía de instalación): </strong><a href="https://github.com/BraianGzz/SistemaMonitoreoAmbiental.git" target="_blank" class="simple-link">Repositorio</a></p>
+                <p><strong>Trabajos prácticos de comprensión: </strong><a href="https://github.com/BraianGzz/ComunicacionDeDatos.git" target="_blank" class="simple-link">RepositorioTPs</a></p>
+                <p><strong>Datasheet (hardware):</strong> <a href="datasheet/ds.pdf" target="_blank" class="simple-link">Ver hojas de datos</a></p>
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

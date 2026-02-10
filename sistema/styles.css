@@ -1,0 +1,328 @@
+/* -------- Reset -------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* -------- Variables globales --------
+*/
+:root {
+  --bg: linear-gradient(135deg, #0f172a, #1e293b);
+  --surface: rgba(255,255,255,.08);
+  --surface-border: rgba(255,255,255,.12);
+
+  --card-bg: rgba(255,255,255,.92);
+  --card-radius: 20px;
+
+  --text-main: #0a0d22;
+  --text-soft: #000000;
+
+  --accent-temp: #ef4444;
+  --accent-hum:  #3b82f6;
+  --accent-gas:  #f59e0b;
+  --accent-dist: #8b5cf6;
+}
+
+/* -------- Fondo -------- */
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  background: var(--bg);
+  padding: 32px;
+  color: white;
+}
+
+/* -------- Contenedor general --------
+*/
+.container {
+  max-width: 1200px;
+  margin: auto;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 28px;
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+/* -------- Header -------- */
+header {
+  padding: 36px 40px;
+  border-bottom: 1px solid var(--surface-border);
+  background: transparent; 
+  transition: background 0.3s ease; 
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin-top: 6px;
+  color: rgba(255,255,255,.75);
+}
+
+/* -------- Dashboard grid -------- */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 32px;
+}
+
+/* -------- Cards -------- */
+.sensor-card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  padding: 26px;
+  text-align: left;
+  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+.sensor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px rgba(0,0,0,.25);
+}
+
+/* -------- Encabezado interno de card -------- */
+.sensor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+/* -------- Iconos modernos --------
+*/
+.sensor-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 1.4rem;
+  color: rgb(255, 255, 255);
+}
+
+/* -------- Colores por sensor -------- */
+.sensor-card.temperature .sensor-icon { background: var(--accent-temp); }
+.sensor-card.humidity    .sensor-icon { background: var(--accent-hum); }
+.sensor-card.gas         .sensor-icon { background: var(--accent-gas); }
+.sensor-card.distance    .sensor-icon { background: var(--accent-dist); }
+
+/* -------- Valores -------- */
+.sensor-value {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.1;
+}
+
+.sensor-unit {
+  font-size: 1rem;
+  color: var(--text-soft);
+}
+
+.sensor-name {
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* -------- Tabla -------- */
+.data-table {
+  padding: 0 32px 32px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 16px;
+  text-align: left;
+}
+
+th {
+  background: rgba(0,0,0,.04);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+td {
+  color: #28394a;
+}
+
+/* -------- Estados -------- */
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-normal  { background: #22c55e; }
+.status-warning { background: #f59e0b; }
+.status-danger  { background: #ef4444; }
+
+ /* ESTILOS DEL MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease;
+}
+
+.modal-body {
+    padding: 30px;
+    max-height: none;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    background: #2c3e50;
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.close {
+    font-size: 2em;
+    cursor: pointer;
+    line-height: 1;
+    transition: transform 0.2s;
+}
+
+.close:hover {
+    transform: scale(1.2);
+}
+
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ecf0f1;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.modal-footer {
+    padding: 20px 30px;
+    border-top: 1px solid #ecf0f1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-cancelar, .btn-guardar {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cancelar {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background: #7f8c8d;
+}
+
+.btn-guardar {
+    background: #3498db;
+    color: white;
+}
+
+.btn-guardar:hover {
+    background: #2980b9;
+}
+
+/* Botones de accion en la tabla */
+.btn-edit, .btn-delete {
+    border: none;
+    background: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: transform 0.2s ease;
+}
+
+.btn-edit:hover {
+    transform: scale(1.2);
+}
+
+.btn-delete:hover {
+    transform: scale(1.2);
+}
+
+/* -------- Responsive -------- */
+@media (max-width: 768px) {
+  body { padding: 20px; }
+  h1 { font-size: 1.9rem; }
+}

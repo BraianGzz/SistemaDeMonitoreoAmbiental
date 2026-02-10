@@ -1,0 +1,155 @@
+:root {
+    --azul-oscuro: #0f172a;
+    --azul-medio: #1e293b;
+    --azul-acento: #3b82f6;
+    --gris-claro: #f8fafc;
+    --blanco: #ffffff;
+    --texto-gris: #475569;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body { 
+    background-color: var(--gris-claro); 
+    color: var(--azul-medio);
+    line-height: 1.6;
+    padding-top: 70px; /* Espacio para que el header fijo no tape nada */
+}
+
+/* Header de Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    height: 70px;
+    background: var(--blanco);
+    position: fixed;
+    top: 0; width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid #e2e8f0; /* Borde sutil abajo */
+}
+
+.logo { font-size: 1.1rem; color: var(--azul-oscuro); }
+.logo strong { color: var(--azul-acento); }
+
+.nav-link {
+    text-decoration: none;
+    color: var(--azul-oscuro);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    transition: 0.2s;
+}
+
+.nav-link:hover { color: var(--azul-acento); }
+
+/* --- NUEVO HERO / ENCABEZADO DE PÁGINA --- */
+.page-header {
+    background-color: var(--azul-oscuro);
+    color: white;
+    padding: 60px 20px 60px 20px; /* Espacio arriba y abajo balanceado */
+    text-align: center;
+    /* Un degradado sutil para que no sea un color plano aburrido */
+    background: linear-gradient(180deg, var(--azul-oscuro) 0%, #1e293b 100%);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.page-header h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    color: #cbd5e1;
+}
+
+/* --- TARJETAS Y CONTENIDO --- */
+.container { 
+    max-width: 900px; /* Ancho máximo para lectura cómoda */
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.card {
+    background: var(--blanco);
+    padding: 40px; /* Buen espacio interno */
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+.card h2 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: var(--azul-oscuro);
+    border-bottom: 2px solid var(--gris-claro);
+    padding-bottom: 10px;
+}
+
+/* ARREGLO DE ESPACIOS EN TEXTO */
+.card p {
+    margin-bottom: 1.2rem; /* Separación entre párrafos normales */
+    color: var(--texto-gris);
+}
+
+/* Estilo específico para tus listas */
+.list-container {
+    background-color: #f1f5f9; /* Fondo gris claro para destacar la lista */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.list-container p {
+    margin-bottom: 0.8rem; /* Un poco más juntos que los párrafos normales */
+    padding-left: 10px;
+    color: var(--azul-medio);
+}
+.list-container p:last-child { margin-bottom: 0; }
+
+/* Barra de Iconos */
+.icon-bar {
+    background-color: var(--azul-oscuro);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 10px;
+}
+
+.icon {
+    height: 40px;
+    width: auto;
+    /* filter: brightness(0) invert(1); */
+    transition: transform 0.3s;
+}
+
+.icon:hover { transform: scale(1.1); }
+
+/* Móvil */
+@media (max-width: 768px) {
+    .page-header h1 { font-size: 1.8rem; }
+    .card { padding: 25px; }
+}
+
+
+.imagen-proyecto {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto; /* espacio arriba y abajo + centrado */
+}

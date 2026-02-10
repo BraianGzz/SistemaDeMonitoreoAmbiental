@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Monitoreo de Sensores</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        
+        <header>
+            <h1>Monitoreo Ambiental</h1>
+            <div class="subtitle">Datos en tiempo real de sensores conectados</div>
+        </header>
+        
+        
+        <div class="dashboard">
+            
+            <div class="sensor-card temperature">
+                <div class="sensor-icon">
+                    <i class="fa-solid fa-temperature-half"></i>
+                </div>
+                <div class="sensor-name">Temperatura</div>
+                <div class="sensor-value" id="temp-value">--</div>
+                <div class="sensor-unit">°C</div>
+            </div>
+            
+            
+            <div class="sensor-card humidity">
+                <div class="sensor-icon">
+                    <i class="fa-solid fa-droplet"></i>
+                </div>
+                <div class="sensor-name">Humedad</div>
+                <div class="sensor-value" id="hum-value">--</div>
+                <div class="sensor-unit">%</div>
+            </div>
+            
+            
+            <div class="sensor-card gas">
+                <div class="sensor-icon">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div class="sensor-name">Nivel de Gas</div>
+                <div class="sensor-value" id="gas-value">--</div>
+                <div class="sensor-unit">PPM</div>
+            </div>
+            
+            
+            <div class="sensor-card distance">
+                <div class="sensor-icon">
+                    <i class="fa-solid fa-ruler-horizontal"></i>
+                </div>
+                <div class="sensor-name">Distancia</div>
+                <div class="sensor-value" id="dist-value">--</div>
+                <div class="sensor-unit">cm</div>
+            </div>
+        </div>
+        
+        
+        <div class="data-table">
+            <h2 style="margin-bottom: 20px; color: #ffffff;">Historial de Mediciones</h2>
+            <div id="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha y Hora</th>
+                            <th>Temperatura (°C)</th>
+                            <th>Humedad (%)</th>
+                            <th>Gas (PPM)</th>
+                            <th>Distancia (cm)</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-body">
+                        <!-- 
+                        LAS FILAS DE LA TABLA SE INSERTARAN DINAMICAMENTE
+                        MEDIANTE JAVASCRIPT CUANDO SE CARGUEN LOS DATOS
+                        -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        <div class="last-update" id="last-update">
+            Ultima actualizacion: --
+        </div>
+    </div>
+
+
+    
+    <div id="modal-editar" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Registro</h2>
+                <span class="close" onclick="cerrarModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="edit-id">
+                
+                <div class="form-group">
+                    <label>Temperatura (°C)</label>
+                    <input type="number" step="0.1" id="edit-temperatura" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label>Humedad (%)</label>
+                    <input type="number" step="0.1" id="edit-humedad" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label>Gas (PPM)</label>
+                    <input type="number" id="edit-gas" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label>Distancia (cm)</label>
+                    <input type="number" step="0.1" id="edit-distancia" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label>Estado de Alerta</label>
+                    <select id="edit-alerta" class="form-input">
+                        <option value="0">Normal</option>
+                        <option value="1">Advertencia</option>
+                        <option value="2">Peligro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+                <button class="btn-guardar" onclick="guardarCambios()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
