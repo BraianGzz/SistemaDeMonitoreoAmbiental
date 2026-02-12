@@ -89,14 +89,14 @@
 
         <section id="docu" class="card">
             <h2>Documentación Técnica del Sistema</h2>
-            <p>Este proyecto demuestra la implementación práctica de conceptos fundamentales de <strong>Comunicación de Datos</strong>: arquitectura cliente-servidor, protocolos de red, API REST, intercambio de datos en formato JSON y flujo de información end-to-end.</p>
+            <p>Este proyecto demuestra la implementación práctica de conceptos fundamentales de <strong>Comunicación de Datos</strong>: arquitectura cliente-servidor, protocolos de red, CRUD completo, intercambio de datos en formato JSON y flujo de información end-to-end.</p>
 
             <div class="list-container">
-                <p>• <strong>Arquitectura Cliente-Servidor:</strong> Arduino actúa como cliente HTTP enviando datos al servidor Apache. Los navegadores web consultan estos datos mediante API REST.</p>
+                <p>• <strong>Arquitectura Cliente-Servidor:</strong> Arduino actúa como cliente HTTP enviando datos al servidor Apache. Los navegadores web consultan estos datos mediante peticiones HTTP al servidor Apache.</p>
                 <p>• <strong>Protocolos de Comunicación TCP/IP:</strong> La transmisión de datos se realiza mediante <strong>HTTP (Capa de Aplicación)</strong>, funcionando sobre <strong>TCP (Capa de Transporte)</strong> e <strong>IPv4 (Capa de Red)</strong>, dentro de una red local <strong>Ethernet (Capa de Enlace)</strong>. TCP garantiza una entrega confiable de la información mediante control de errores y mecanismos de retransmisión.</p>
                 <p>• <strong>Referencia al Modelo OSI:</strong> El sistema puede analizarse según las 7 capas del modelo OSI como marco teórico: Capa Física (Cable UTP), Enlace (Ethernet 802.3), Red (IPv4), Transporte (TCP), Sesión (Conexiones HTTP), Presentación (JSON), Aplicación (HTTP/1.1). Cada capa cumple su función específica en la comunicación Arduino-Servidor.</p>
                 <p>• <strong>Formato de Datos - JSON:</strong> Estructura ligera y legible para intercambio de información. El servidor responde en JSON y datos estructurados.</p>
-                <p>• <strong>API REST - CRUD Completo:</strong> 4 endpoints implementados: <code>POST guardar_datos.php</code> (Create), <code>GET obtener_datos.php</code> (Read), <code>PUT actualizar_registro.php</code> (Update), <code>DELETE eliminar_registro.php</code> (Delete).</p>
+                <p>• <strong>CRUD Completo:</strong> 4 endpoints implementados: <code>POST guardar_datos.php</code> (Create), <code>GET obtener_datos.php</code> (Read), <code>PUT actualizar_registro.php</code> (Update), <code>DELETE eliminar_registro.php</code> (Delete).</p>
                 <p>• <strong>Código:</strong> Todo el código del proyecto se encuentra debidamente comentado y documentado para facilitar su comprensión y análisis</p>
 
                 <p>• <strong>Base de Datos:</strong> MySQL con tabla <em>sensor</em> (7 campos).</p>
