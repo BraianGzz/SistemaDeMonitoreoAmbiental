@@ -89,7 +89,6 @@
 
         <section id="docu" class="card">
             <h2>Documentación Técnica del Sistema</h2>
-            <p>Descripción de la arquitectura de comunicación, protocolos de red y flujo de datos entre el dispositivo IoT y el servidor.</p>
             <p>Este proyecto demuestra la implementación práctica de conceptos fundamentales de <strong>Comunicación de Datos</strong>: arquitectura cliente-servidor, protocolos de red, API REST, intercambio de datos en formato JSON y flujo de información end-to-end.</p>
 
             <div class="list-container">
@@ -119,8 +118,8 @@
                 <p>• <strong>Frecuencia de Actualización:</strong> Arduino envía datos cada 10 segundos. Interfaz web consulta cada 5 segundos (actualización asíncrona sin recargar).</p>
                 <p>• <strong>Diagrama de Conexiones:</strong> Shield Ethernet conectado vía SPI (pines 10-13). DHT11 en pin digital 2. HC-SR04 en pines 8-9. MQ-2 en pin analógico A0. OLED vía I2C (A4-A5).</p>
                 <img src="diagramas/circuit_image.png" alt="Montaje del sistema IoT" class="imagen-proyecto">
+                <p>• <strong>Comunicación Serie y Señales de Sensores:</strong> El sistema utiliza transmisión serie en distintos niveles: <strong>UART</strong> (9600 bps, asíncrona, vía USB) para el Monitor Serie, <strong>SPI</strong> (serie síncrona, emisor y receptor comparten una señal de reloj) para el Shield Ethernet y <strong>I2C</strong> (bus síncrono SDA/SCL maestro-esclavo) para la pantalla OLED. Los sensores emplean <strong>señales digitales</strong> (DHT11, HC-SR04) y <strong>señal analógica</strong> (MQ-2). A nivel de transporte, <strong>TCP utiliza confirmaciones ACK y retransmisión automática (ARQ)</strong>.</p>
 
-                <p>• <strong>Interfaz Web Responsive:</strong> Dashboard con 4 tarjetas de sensores, tabla de historial con CRUD visual, modal de edición.</p>
                 <p>• <strong>Persistencia de Datos:</strong> ~8,640 registros diarios (1 cada 10s).</p>
                 <p>• <strong>Confiabilidad del Sistema:</strong> Timeouts de 5 segundos en conexiones. Reintentos automáticos.</p>
 
